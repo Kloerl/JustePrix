@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Juste prix !</h1>
+
+    <p> 
+        Trouver un nombre entre 1 et 100
+    </p>
+    <section>
+        <input type="number" id="input__user"/>
+        <button type="button" 
+        id="button__send">Envoyer</button>
+    </section>
+
+    <p id="result">
+        Merci de commencer à jouer
+    </p>
+
+    <script>
+        let hiddenNumber = Math.floor(Math.random() * 100) + 1
+        console.log("valeur", hiddenNumber)
+
+        let userValue = 0
+
+        let buttonSend = document.getElementById("button__send")
+        buttonSend.addEventListener("click", function() {
+            let userInput = document.getElementById("input__user")
+            
+            userValue = userInput.value
+
+            let result = document.getElementById("result")
+
+            if (userValue < hiddenNumber) {
+            result.textContent = "C'est plus !"
+            } else if (userValue > hiddenNumber) {
+            result.textContent = "C'est moins !"
+            } else {
+            result.textContent = "C'est gagné ! La valeur cachée était : " + hiddenNumber
+            hiddenNumber = Math.floor(Math.random() * 100) + 1
+            userInput.value = ""
+            }
+            
+            })        
+
+    </script>
+</body>
+</html>
